@@ -21,13 +21,16 @@ class Paperboy
     else
       deliveries = (start_address -  end_address) / 2
     end
-    deliveries.round(0)
+    if deliveries % 2 != 0
+      deliveries.floor
+      deliveries += 1
+    end
     pay = 0
     if deliveries < quota()
       pay = deliveries * @reg_pay - @under_quota_loss
     elsif deliveries > quota()
-      pay = @min_papers * @reg_pay
-      pay += (deliveries - @min_papers) * @over_quota_pay
+      pay = quota * @reg_pay
+      pay += (deliveries - quota) * @over_quota_pay
     else
       pay = quota * @reg_pay
     end
