@@ -21,7 +21,6 @@ class Rover
     @y = y
     @direction_array = ['N', 'E', 'S', 'W']
     @direction = @direction_array.index(direction)
-    puts "Start x = #{@x} y = #{@y} direction = #{direction}"
   end
 
   def move(move_string)
@@ -56,16 +55,15 @@ class Rover
         @x -= 1
       end
     end
-    puts "#{command} #{@x} #{@y} #{@direction_array[@direction]}"
   end
 
 end
 
 mars = Mars.new(5,5)
 mars.add_rover(1, 2, 'N')
-puts mars.move_rover('LMLMLMLMM')
+mars.move_rover('LMLMLMLMM')
 
 puts ' '
 
 mars.add_rover(3, 3, 'E')
-puts mars.move_rover('MMRMMRMRRM')
+mars.move_rover('MMRMMRMRRM')
